@@ -18,9 +18,7 @@ const mongodb = require('mongodb');
 app.use(cors());
 app.use(helmet());
 app.use(compress());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   limit: '50mb',
@@ -29,7 +27,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 // Host the public folder
-app.use('/', express.static(app.get('public')));
+app.use(express.static('public'));
 
 app.engine('handlebars', handlebars({
   defaultLayout: 'main',
@@ -45,6 +43,35 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+
+// import routes
+app.use(require('./routes'));
+
+const index = require('./routes/index');
+const api = require('./routes/api');
+
+// set routes
+app.use('/', index);
+// app.use('/api', api);
+
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// production error handler
+// no stacktraces leaked to user
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.json({
+    errors: {
+      message: err.message,
+      error: {}
+    }
+  });
+});
 
 app.listen(80, (err) => {
   if (err) return console.error(err);

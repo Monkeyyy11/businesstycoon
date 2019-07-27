@@ -15,7 +15,7 @@ router.get('/callback',
   }),
   (req, res) => {
     req.session.token = req.user.token;
-    res.redirect('/');
+    res.redirect('/game');
   });
 
 module.exports = router;

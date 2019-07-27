@@ -17,12 +17,17 @@
             <ul class="navbar-nav ml-auto"></ul>
             <li class="nav-item">
                 {{#if loggedIn}}
-                <a href="/game" class="btn lb-btn-login">Enter game</a>
+                <a href="/game">
+                    <button type="button" class="btn btn-success" aria-label="Google Auth">
+                        <i class="mdi mdi-gamepad" aria-hidden="true"></i>
+                        PLAY
+                    </button>
+                </a>
                 {{else}}
                 <a href="/auth/google">
-                    <button type="button" class="btn btn-primary" aria-label="Google Auth">
-                        <i class="mdi mdi-google" aria-hidden="true"></i>
-                        Log in with Google
+                    <button type="button" class="btn btn-success" aria-label="Google Auth">
+                        <i class="mdi mdi-gamepad" aria-hidden="true"></i>
+                        PLAY
                     </button>
                 </a>
                 {{/if}}

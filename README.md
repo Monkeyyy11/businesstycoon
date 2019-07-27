@@ -1,2 +1,3 @@
-# buisnesscompany
-Buisness company game [NEW]
+# Business Tycoon
+
+Business Tycoon game [NEW]

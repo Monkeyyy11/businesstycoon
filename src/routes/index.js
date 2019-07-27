@@ -7,7 +7,7 @@ auth(passport);
 router.use(passport.initialize());
 
 router.get('/', (req, res, next) => res.render('index', {
-  loggedIn: req.user
+  loggedIn: req.session.passport ? req.session.passport.user.profile : false
 }));
 
 router.get('/logout', (req, res) => {

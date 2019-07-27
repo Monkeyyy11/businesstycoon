@@ -80,7 +80,7 @@ app.use(cookieParser());
 
 // Set up default mongoose connection
 const mongoDB = process.env.DATABASE_URL;
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(mongoDB, { useNewUrlParser: true }).then(() => console.log('Connected to DB!'));
 
 // Get the default connection
 const db = mongoose.connection;

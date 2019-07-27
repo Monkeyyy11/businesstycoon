@@ -1,3 +1,7 @@
 body {
     font-family: 'Hind Madurai', sans-serif !important;
 }
+
+.bt-body-bg {
+    background-color: #fff;
+}

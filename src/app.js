@@ -29,9 +29,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
-// Host the public folder
-app.use(express.static('public'));
-
 app.engine('handlebars', handlebars({
   defaultLayout: 'main',
   layoutsDir: `${__dirname}/views/layouts/`,
@@ -46,6 +43,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+
+app.use('/static', express.static(`${__dirname}/public`));
 
 // import routes
 app.use(require('./routes'));

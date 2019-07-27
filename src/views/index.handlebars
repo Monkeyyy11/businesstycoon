@@ -1,10 +1,34 @@
 <header>
     {{> header/index_header}}
 </header>
-<p>Hey!</p>
-<a href="/auth/google">
-    <button type="button" class="btn btn-primary" aria-label="Google Auth">
-        <i class="mdi mdi-google" aria-hidden="true"></i>
-        Log in with Google
-    </button>
-</a>
+
+<main>
+    <div class="container-fluid">
+        {{#not loggedIn}}
+        <div class="d-flex justify-content-center h-100 pt-5">
+            <div class="card text-center bg-light">
+                <div class="card-header">
+                    <strong>Register or login</strong>
+                </div>
+                <div class="card-body">
+                    <a href="/auth/google" class="card-title">
+                    <button type="button" class="btn btn-primary" aria-label="Google Auth">
+                        <i class="mdi mdi-google" aria-hidden="true"></i>
+                        REGISTER OR LOGIN WITH GOOGLE
+                    </button>
+                </a>
+                </div>
+            </div>
+        </div>
+        {{/not}}
+    </div>
+    <section id="featureslist">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>Features</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

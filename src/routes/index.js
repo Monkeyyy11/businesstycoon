@@ -18,17 +18,6 @@ router.get('/logout', (req, res) => {
   return res.redirect('/');
 });
 
-router.get('/auth/google', passport.authenticate('google', {
-  scope: ['https://www.googleapis.com/auth/userinfo.profile']
-}));
-
-router.get('/auth/google/callback',
-  passport.authenticate('google', {
-    failureRedirect: '/'
-  }),
-  (req, res) => {
-    req.session.token = req.user.token;
-    res.redirect('/');
-  });
+router.use('/auth', require('./auth'));
 
 module.exports = router;

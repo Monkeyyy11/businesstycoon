@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const chalk = require('chalk');
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 const session = require('express-session');
@@ -17,11 +18,10 @@ const cookieSession = require('cookie-session');
 const auth = require('./middleware/auth');
 require('dotenv').config();
 
-// Enable CORS, security, compression, favicon and body parsing
+// Enable CORS, security, compression and body parsing
 app.use(cors());
 app.use(helmet());
 app.use(compress());
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   limit: '50mb',
@@ -78,6 +78,16 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 app.use(cookieParser());
+
+// Set up default mongoose connection
+const mongoDB = process.env.DATABASE_URL;
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+
+// Get the default connection
+const db = mongoose.connection;
+
+// Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.listen(80, (err) => {
   if (err) return console.error(err);

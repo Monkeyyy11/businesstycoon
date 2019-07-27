@@ -1,0 +1,42 @@
+{
+    "newyork": {
+        "id": "newyork",
+        "name": "New York",
+        "image": "https://images.musement.com/cover/0002/49/thumb_148242_cover_header.jpeg?w=1200&h=630&q=60&fit=crop"
+    },
+    "shanghai": {
+        "id": "shanghai",
+        "name": "Shanghai",
+        "image": "https://www.worldatlas.com/r/w728-h425-c728x425/upload/56/1c/9f/shutterstock-551524441.jpg"
+    },
+    "istanbul": {
+        "id": "istanbul",
+        "name": "Istanbul",
+        "image": "https://www.worldatlas.com/r/w728-h425-c728x425/upload/e6/5b/62/shutterstock-126662546.jpg"
+    },
+    "tokyo": {
+        "id": "tokyo",
+        "name": "Tokyo",
+        "image": "https://www.worldatlas.com/r/w728-h425-c728x425/upload/9b/20/42/shutterstock-599343314.jpg"
+    },
+    "moscow": {
+        "id": "moscow",
+        "name": "Moscow",
+        "image": "https://www.worldatlas.com/r/w728-h425-c728x425/upload/b0/18/6e/moscow-city-russia.jpg"
+    },
+    "berlin": {
+        "id": "berlin",
+        "name": "Berlin",
+        "image": "https://www.bz-berlin.de/data/uploads/2019/07/roller-tor_1564156841-768x432.jpg"
+    },
+    "london": {
+        "id": "london",
+        "name": "London",
+        "image": "https://www.visitbritain.com/sites/default/files/styles/consumer_vertical_hero__1920x1080/public/paragraphs_bundles/campaign_offer/images/london_0.jpg?itok=1vGDckSM"
+    },
+    "brussels": {
+        "id": "brussels",
+        "name": "Brussels",
+        "image": "https://www.cisl.cam.ac.uk/about/contact/brussels/images/brussels.jpg"
+    }
+}

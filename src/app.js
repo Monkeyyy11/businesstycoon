@@ -12,7 +12,10 @@ const handlebars = require('express-handlebars');
 const handlebarshelpers = require('handlebars-helpers')();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const mongodb = require('mongodb');
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+const auth = require('./middleware/auth');
+require('dotenv').config();
 
 // Enable CORS, security, compression, favicon and body parsing
 app.use(cors());
@@ -47,13 +50,6 @@ app.use(session({
 // import routes
 app.use(require('./routes'));
 
-const index = require('./routes/index');
-const api = require('./routes/api');
-
-// set routes
-app.use('/', index);
-// app.use('/api', api);
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   var err = new Error('Not Found');
@@ -72,6 +68,16 @@ app.use((err, req, res, next) => {
     }
   });
 });
+
+auth(passport);
+app.use(passport.initialize());
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['SECRECT KEY'],
+  maxAge: 24 * 60 * 60 * 1000
+}));
+app.use(cookieParser());
 
 app.listen(80, (err) => {
   if (err) return console.error(err);

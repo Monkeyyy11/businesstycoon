@@ -1,8 +1,17 @@
 var router = require('express').Router();
 const ProductModel = require('../../models/product');
 
-router.get('/', (req, res, next) => res.render('index', {
-  loggedIn: req.session.passport ? req.session.passport.user.profile : false
-}));
+router.get('/', async (req, res, next) => {
+  const allProductsArray = [];
+  await ProductModel.find({}, async (err, products) => {
+    if (err) return console.error(err);
+
+    await products.map(product => allProductsArray.push(product));
+  });
+
+  return res.render('index', {
+    loggedIn: req.session.passport ? req.session.passport.user.profile : false
+  });
+});
 
 module.exports = router;

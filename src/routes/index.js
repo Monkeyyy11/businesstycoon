@@ -31,5 +31,6 @@ router.get('/error', (req, res) => {
 
 router.use('/auth', require('./auth'));
 router.use('/game', require('./game'));
+router.use('/api', require('./api'));
 
 module.exports = router;

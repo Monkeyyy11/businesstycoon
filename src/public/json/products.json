@@ -1,0 +1,30 @@
+{
+    "apple": {
+        "id": "apple",
+        "title": "Apple",
+        "category": "Fruits",
+        "productionPrice": 0.03,
+        "startPrice": 0.50,
+        "requirement": 50,
+        "sellableToBots": false,
+        "production": "Agriculture",
+        "productiontime": 30,
+        "productionquantity": 0.25,
+        "volume": 1,
+        "productlevel": 1
+    },
+    "potato": {
+        "id": "potato",
+        "title": "Potato",
+        "category": "Vegetables",
+        "productionPrice": 0.05,
+        "startPrice": 0.50,
+        "requirement": 50,
+        "sellableToBots": false,
+        "production": "Agriculture",
+        "productiontime": 40,
+        "productionquantity": 0.25,
+        "volume": 1,
+        "productlevel": 1
+    }
+}

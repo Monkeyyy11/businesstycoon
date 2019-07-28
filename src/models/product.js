@@ -13,15 +13,19 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  productionPrice: {
+    type: Number,
+    required: true
+  },
   startPrice: {
     type: Number,
     required: true
   },
   requirement: {
-    type: String,
+    type: Number, // 1-100
     required: true
   },
-  sellable: {
+  sellableToBots: {
     type: Boolean,
     required: true
   },
@@ -30,7 +34,7 @@ const productSchema = new mongoose.Schema({
     required: true
   },
   productiontime: {
-    type: Number, // Time in minutes per 100m2
+    type: Number,
     required: true
   },
   productionquantity: {

@@ -9,7 +9,7 @@
 ## Known Bugs
 
 - [ ] Javascript to delete active class and add active class for navbar items
-
+- [ ] Fix error route
 ---
 
 ## Suggestions

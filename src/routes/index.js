@@ -22,6 +22,13 @@ router.get('/logout', (req, res) => {
   return res.redirect('/');
 });
 
+router.get('/error', (req, res) => {
+  return res.render('error', {
+    statuscode: req.query.statuscode,
+    message: req.query.message
+  });
+});
+
 router.use('/auth', require('./auth'));
 router.use('/game', require('./game'));
 

@@ -64,10 +64,11 @@ app.use((req, res, next) => {
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
-  res.json({
-    errors: {
-      message: err.message,
-      error: {}
+  return res.redirect({
+    pathname: '/error',
+    query: {
+      statuscode: err.status,
+      message: err.message
     }
   });
 });

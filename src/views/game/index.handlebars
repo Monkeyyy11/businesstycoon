@@ -1,4 +1,21 @@
 <header>
     {{> header/game_header}}
 </header>
-<p>Game page</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/api/game/sendadvertisement" method="POST">
+                        <div class="form-group">
+                            <label for="advertisment">Make an advertisement for your company on the global board:</label>
+                            <textarea class="form-control" id="advertisment" rows="3" minlength="1" ,
+                                maxlength="250"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

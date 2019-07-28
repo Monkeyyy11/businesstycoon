@@ -64,11 +64,10 @@ app.use((req, res, next) => {
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
-  return res.redirect({
-    pathname: '/error',
-    query: {
-      statuscode: err.status,
-      message: err.message
+  res.json({
+    errors: {
+      message: err.message,
+      error: {}
     }
   });
 });
@@ -87,10 +86,6 @@ app.use(cookieParser());
 const mongoDB = process.env.DATABASE_URL;
 mongoose.connect(mongoDB, { useNewUrlParser: true }).then(async () => {
   console.log('Connected to DB!');
-  await app.listen(80, (err) => {
-    if (err) return console.error(err);
-    console.log(chalk.green('Website running on localhost'));
-  });
 
   for (const index in productsJson) {
     await ProductModel.findOne({ id: productsJson[index].id }).exec((err, result) => {
@@ -112,6 +107,11 @@ mongoose.connect(mongoDB, { useNewUrlParser: true }).then(async () => {
         console.log('Saved new server configs');
       });
     }
+  });
+
+  await app.listen(80, (err) => {
+    if (err) return console.error(err);
+    console.log(chalk.green('Website running on localhost'));
   });
 });
 

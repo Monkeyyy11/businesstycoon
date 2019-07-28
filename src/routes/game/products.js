@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
     await products.map(product => allProductsArray.push(product));
   });
 
-  return res.render('index', {
+  return res.render('game/products/index', {
     loggedIn: req.session.passport ? req.session.passport.user.profile : false
   });
 });

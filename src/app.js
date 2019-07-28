@@ -16,6 +16,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const auth = require('./middleware/auth');
+const productsJson = require('./public/json/products.json');
+const ProductModel = require('./models/product');
 require('dotenv').config();
 
 // Enable CORS, security, compression and body parsing
@@ -80,15 +82,34 @@ app.use(cookieParser());
 
 // Set up default mongoose connection
 const mongoDB = process.env.DATABASE_URL;
-mongoose.connect(mongoDB, { useNewUrlParser: true }).then(() => console.log('Connected to DB!'));
+mongoose.connect(mongoDB, { useNewUrlParser: true }).then(async () => {
+  console.log('Connected to DB!');
+  await app.listen(80, (err) => {
+    if (err) return console.error(err);
+    console.log(chalk.green('Website running on localhost'));
+  });
+
+  for (const index in productsJson) {
+    await ProductModel.findOne({ id: productsJson[index].id }).exec((err, result) => {
+      if (err || !result) {
+        const newProduct = new ProductModel(productsJson[index]);
+        newProduct.save((err) => {
+          if (err) return console.error(err);
+          console.log(`Saved new product ${productsJson[index].id}`);
+        });
+      }
+    });
+  }
+  /* const test = new ProductModel({ id: 'test', title: 'test' });
+  test.save((err) => {
+    if (err) return console.error(err);
+    console.log('saved');
+  });
+  return res.status(200); */
+});
 
 // Get the default connection
 const db = mongoose.connection;
 
 // Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-app.listen(80, (err) => {
-  if (err) return console.error(err);
-  console.log(chalk.green('Website running on localhost'));
-});

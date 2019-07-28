@@ -75,6 +75,9 @@
             ],
             "no-multi-assign": [
                 "off"
+            ],
+            "guard-for-in": [
+                "off"
             ]
         }
     }

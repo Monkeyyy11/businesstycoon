@@ -5,3 +5,15 @@ body {
 .bt-body-bg {
     background-color: #fff;
 }
+
+.bt-img-profile {
+    width: 1.6em;
+    height: 1.6em;
+}
+
+.bt-btn-profile {
+    background-color: transparent;
+    border-color: white;
+    color: white !important;
+    border-radius: 100px;
+}

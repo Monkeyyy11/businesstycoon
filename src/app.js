@@ -17,7 +17,9 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const auth = require('./middleware/auth');
 const productsJson = require('./public/json/products.json');
+const serverconfigJson = require('./public/json/serverconfig.json');
 const ProductModel = require('./models/product');
+const ServerModel = require('./models/server');
 require('dotenv').config();
 
 // Enable CORS, security, compression and body parsing
@@ -100,12 +102,16 @@ mongoose.connect(mongoDB, { useNewUrlParser: true }).then(async () => {
       }
     });
   }
-  /* const test = new ProductModel({ id: 'test', title: 'test' });
-  test.save((err) => {
-    if (err) return console.error(err);
-    console.log('saved');
+
+  await ServerModel.findOne().exec((err, result) => {
+    if (err || !result) {
+      const newServermodel = new ServerModel(serverconfigJson);
+      newServermodel.save((err) => {
+        if (err) return console.error(err);
+        console.log('Saved new server configs');
+      });
+    }
   });
-  return res.status(200); */
 });
 
 // Get the default connection

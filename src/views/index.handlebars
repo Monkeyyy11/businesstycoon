@@ -3,27 +3,29 @@
 </header>
 
 <main>
-    <div class="container-fluid">
-        {{#not loggedIn}}
-        <div class="d-flex justify-content-center h-100 pt-5">
-            <div class="card text-center bg-light">
-                <div class="card-header">
-                    <strong>Register or login</strong>
-                </div>
-                <div class="card-body">
-                    <a href="/auth/google" class="card-title">
-                    <button type="button" class="btn btn-primary" aria-label="Google Auth">
-                        <i class="mdi mdi-google" aria-hidden="true"></i>
-                        REGISTER OR LOGIN WITH GOOGLE
-                    </button>
-                </a>
+    <div class="container">
+        <div class="row">
+            {{#not loggedIn}}
+            <div class="d-flex justify-content-center h-100 pt-5 col-12">
+                <div class="card text-center bg-light">
+                    <div class="card-header">
+                        <strong>Register or login</strong>
+                    </div>
+                    <div class="card-body">
+                        <a href="/auth/google" class="card-title">
+                            <button type="button" class="btn btn-primary" aria-label="Google Auth">
+                                <i class="mdi mdi-google" aria-hidden="true"></i>
+                                REGISTER OR LOGIN WITH GOOGLE
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         {{/not}}
     </div>
 
-<!-- Features page -->
+    <!-- Features page -->
     <section id="featureslist">
         <div class="container">
             <div class="row">

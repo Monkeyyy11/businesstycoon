@@ -22,12 +22,12 @@ router.get('/logout', (req, res) => {
   return res.redirect('/');
 });
 
-router.get('/error', (req, res) => {
-  return res.render('error', {
-    statuscode: req.query.statuscode,
-    message: req.query.message
-  });
-});
+router.get('/error', (req, res) => res.render('error', {
+  statuscode: req.query.statuscode,
+  message: req.query.message
+}));
+
+router.get('/docs', (req, res) => res.render('docs'));
 
 router.use('/auth', require('./auth'));
 router.use('/game', require('./game'));

@@ -13,7 +13,7 @@ router.get('/', passport.authenticate('google', {
 
 router.get('/callback',
   passport.authenticate('google', {
-    failureRedirect: '/'
+    failureRedirect: '/error'
   }), async (req, res) => {
     await UserModel.findOne({ googleId: req.session.passport.user.profile.id }).exec(async (err, result) => {
       if (err || !result) {
@@ -41,7 +41,7 @@ router.get('/callback',
         req.session.passport.user.profile.ingameId = result.id;
       }
       req.session.token = req.user.token;
-      res.redirect('/game');
+      return res.redirect('/game');
     });
   });
 
